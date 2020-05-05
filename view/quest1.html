@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>ATIVIDADE</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+        }
+        input[type=number] {
+        -moz-appearance: textfield;
+        }
+    </style>
+</head>
+<body>
+    <h1>QUESTAO 1</h1>
+    
+    <label for="">Informe o número de campos</label><br><br>
+    <input type="number" id="numero" required>
+    <button onclick="addCampos()">criar</button>
+    <form id="newFields" action="/quest1" method="post"></form>
+
+
+
+    <script>
+
+        function addCampos(){
+            let camp = document.getElementById('numero').value
+            let form = document.getElementById('newFields')
+            
+            for(let i = 0; i < camp; i++){
+                form.insertAdjacentHTML("afterbegin", `<input type='number' name=${"param"+i} required> `)   
+            }
+
+            form.insertAdjacentHTML("beforeend", "<button onclick='somarCampos()' type='submit'>Somar</button>")   
+        }
+
+        function somarCampos(){
+            let form = document.getElementById('newFields')
+
+            campos = form.children
+
+            for(let i = 0; i < campos-1; i++){
+                console.log(i)
+            }
+        }
+    </script>
+</body>
+</html>
